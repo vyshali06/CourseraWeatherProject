@@ -1,0 +1,25 @@
+body {
+    background-color: aquamarine;
+    background-image: linear-gradient(to right top, #49dee2, #38d6ff, #70c9ff, #b0b6ff, #e4a1ed);
+    color: black;
+    text-align: center;
+}
+
+#selectStyle {
+    height: 29px;
+    overflow: hidden;
+    width: 470px;
+    position: relative;
+    text-align: center;
+}
+
+h1 {
+    font-size: 70px;
+    font-weight: 600;
+    background-image: conic-gradient(#553c9a, #ee4b2b, #00c2cb);
+    color: transparent;
+    background-clip: text;
+    font-family: cursive, Comic Sans MS;
+    position: relative;
+    text-align: center;
+}
