@@ -39,12 +39,32 @@ var displayData = function () {
         .then(res => {
             return res.json();
         }).then(data => {
+            const mapWeather = new Map();
+            mapWeather.set('clear', 'Clear');
+            mapWeather.set('cloudy', 'Very Cloudy');
+            mapWeather.set('fog', 'Foggy');
+            mapWeather.set('humid', 'Humid'); 
+            mapWeather.set('ishower', 'Isolated showers');
+            mapWeather.set('lightrain', 'Light Rain');
+            mapWeather.set('lightsnow', 'Light Snow');
+            mapWeather.set('mcloudy', 'Cloudy');
+            mapWeather.set('oshower', 'Occasional showers');
+            mapWeather.set('pcloudy', 'Partly cloudy');
+            mapWeather.set('rain', 'Rain');
+            mapWeather.set('rainsnow', 'Rain-Snow Mixed');
+            mapWeather.set('snow', 'Snow');
+            mapWeather.set('ts', 'Thunderstorm Possible');
+            mapWeather.set('tsrain', 'Thunderstorm')
+            mapWeather.set('tstorm', 'Thunderstorm Possible');
+            mapWeather.set('windy', 'Windy');
             data.dataseries.forEach(element => {
                 var strDate = String(element.date);
-                var date = new Date(strDate.substring(0,4),strDate.substring(4,6), strDate.substring(6));
+                var date = new Date(strDate.substring(0,4),strDate.substring(4,6), strDate.substring(6)).toDateString();
                 var img = "images/" + element.weather + ".png";
-                console.log(img+"   element.date "+element.date+"   date "+date)
-                const markup = `<image src=${img} alt=${element.weather}></image> <li>${date}</li> <br></br>`;
+                const markup = `<div class="box"> <p>${date}</p>
+                            <img src=${img} alt=${element.weather}></img> 
+                            <p> ${mapWeather.get(element.weather)} </p>
+                            </div>`;
                 document.querySelector('ul').insertAdjacentHTML('afterbegin', markup);
             });
         }).catch(error => console.log(error));
